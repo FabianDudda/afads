@@ -1,0 +1,22 @@
+{
+  "name": "afads",
+  "private": true,
+  "workspaces": [
+    "packages/components"
+  ],
+  "scripts": {
+    "build:lib": "npm run build --workspace=packages/components",
+    "watch:lib": "npm run watch --workspace=packages/components",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "dev": "concurrently \"npm run watch:lib\" \"npm run docs:dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.4",
+    "markdown-it": "^15.0.2",
+    "vitepress": "^1.6.4"
+  },
+  "dependencies": {
+    "@elenajs/core": "^1.0.1"
+  }
+}

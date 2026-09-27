@@ -1,0 +1,70 @@
+@scope (my-button) {
+  /* Unset makes sure styles don't leak in */
+  :scope,
+  *:where(:not(img, svg):not(svg *)),
+  *::before,
+  *::after {
+    all: unset;
+    display: revert;
+  }
+
+  /* Targets the host element (my-button) */
+  :scope {
+    /* Default custom properties. Override for variants where needed. */
+    --my-button-font: var(--font-family-body, sans-serif);
+    --my-button-font-size: var(--size-step-0, 1rem);
+    --my-button-font-weight: var(--font-weight-button, 500);
+    --my-button-bg: var(--color-surface-default, white);
+    --my-button-bg-hover: var(--color-surface-default-hover, #fafafa);
+    --my-button-text: var(--color-text-loud, #121812);
+    --my-button-padding-x: var(--space-sm, 1em);
+    --my-button-padding-y: var(--space-xs, 0.6em);
+    --my-button-border-color: var(--color-border-quiet, #eaeaea);
+    --my-button-border-width: var(--border-width-main, 1px);
+    --my-button-border-style: var(--border-style-main, solid);
+    --my-button-radius: var(--radius-sm, 0.5em);
+    /* Display mode for the host element */
+    display: inline-block;
+  }
+
+  /* Overrides for primary variant */
+  :scope[variant="primary"] {
+    --my-button-bg: var(--color-primary-bg, #3d33cf);
+    --my-button-bg-hover: var(--color-primary-bg-hover, #3730b5);
+    --my-button-text: var(--color-on-primary, #edf1ff);
+    --my-button-border-color: transparent;
+  }
+  /* Overrides for danger variant */
+  :scope[variant="danger"] {
+    --my-button-bg: var(--color-danger-bg, #fee2e2);
+    --my-button-bg-hover: var(--color-danger-bg-hover, #fecaca);
+    --my-button-text: var(--color-on-danger, #b91c1c);
+    --my-button-border-color: transparent;
+  }
+  /* Overrides for success variant */
+  :scope[variant="success"] {
+    --my-button-bg: var(--color-success-bg, #dcfce7);
+    --my-button-bg-hover: var(--color-success-bg-hover, #bbf7d0);
+    --my-button-text: var(--color-on-success, #064e3b);
+    --my-button-border-color: transparent;
+  }
+
+  .my-button {
+    text-decoration: none;
+    font-family: var(--my-button-font);
+    font-size: var(--my-button-font-size);
+    font-weight: var(--my-button-font-weight);
+    color: var(--my-button-text);
+    background: var(--my-button-bg);
+    border-color: var(--my-button-border-color);
+    border-width: var(--my-button-border-width);
+    border-style: var(--my-button-border-style);
+    border-radius: var(--my-button-radius);
+    padding: var(--my-button-padding-y) var(--my-button-padding-x);
+    display: inline-flex;
+    cursor: pointer;
+    &:hover {
+      background: var(--my-button-bg-hover);
+    }
+  }
+}
