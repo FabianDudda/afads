@@ -1,5 +1,5 @@
 <script setup>
-import { data as manifest } from "../../custom-elements.data.mjs";
+import { useComponentManifest } from "../composables/useComponentManifest.js";
 import MarkdownIt from "markdown-it";
 
 const md = new MarkdownIt();
@@ -11,9 +11,7 @@ const props = defineProps({
   },
 });
 
-const component = manifest.modules
-  .flatMap((m) => m.declarations ?? [])
-  .find((d) => d.tagName === props.tag);
+const { component } = useComponentManifest(props.tag);
 
 const description = md.render(component.description);
 </script>

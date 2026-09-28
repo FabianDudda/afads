@@ -1,30 +1,34 @@
-<ComponentHeader tag="my-button" />
+<ComponentHeader tag="ds-button" />
+
+## Playground
+
+<Playground tag="ds-button" />
 
 ## Examples
 
 ::: raw
 <div class="component-example">
-  <my-button>Click me</my-button>
-  <my-button variant="primary">Click me</my-button>
-  <my-button variant="danger">Click me</my-button>
-  <my-button variant="success">Click me</my-button>
+  <ds-button>Click me</ds-button>
+  <ds-button variant="primary">Click me</ds-button>
+  <ds-button variant="danger">Click me</ds-button>
+  <ds-button variant="success">Click me</ds-button>
 </div>
 :::
 
 ```html
-<my-button>Click me</my-button>
-<my-button variant="primary">Click me</my-button>
-<my-button variant="danger">Click me</my-button>
-<my-button variant="success">Click me</my-button>
+<ds-button>Click me</ds-button>
+<ds-button variant="primary">Click me</ds-button>
+<ds-button variant="danger">Click me</ds-button>
+<ds-button variant="success">Click me</ds-button>
 ```
 
 ## Props
 
-<PropsTable tag="my-button" />
+<PropsTable tag="ds-button" />
 
 ## Usage
 
-Use a button to trigger an action or event, such as submitting a form, opening a dialog, or confirming a decision. Use a button with an `href` to act as a CTA link.
+Use a button to trigger an action or event, such as submitting a form, opening a dialog, or confirming a decision.
 
 ### Variants
 
@@ -45,8 +49,8 @@ Place primary buttons _after_ default buttons if you need to stack two buttons t
 
 ::: raw
 <div class="component-example">
-  <my-button>Cancel</my-button>
-  <my-button variant="primary">Save Document</my-button>
+  <ds-button>Cancel</ds-button>
+  <ds-button variant="primary">Save Document</ds-button>
 </div>
 :::
 
@@ -56,40 +60,24 @@ Stack primary, danger, or success buttons next to one another
 
 ::: raw
 <div class="component-example">
-  <my-button variant="primary">Click me</my-button>
-  <my-button variant="danger">Click me</my-button>
+  <ds-button variant="primary">Click me</ds-button>
+  <ds-button variant="danger">Click me</ds-button>
 </div>
 
 <div class="component-example">
-  <my-button variant="success">Do a Good Thing!</my-button>
-  <my-button variant="success">Do Another Good Thing!</my-button>
+  <ds-button variant="success">Do a Good Thing!</ds-button>
+  <ds-button variant="success">Do Another Good Thing!</ds-button>
 </div>
 :::
 
 ---
-
-### Links
-
-Pass an `href` to render the button as an anchor element. Use this when the action navigates the user to a new page or location rather than triggering an in-page action.
-
-::: raw
-<div class="component-example">
-  <my-button href="/get-started">Get started</my-button>
-</div>
-:::
-
-```html
-<my-button href="/get-started">Get started</my-button>
-```
-
-Don't use a link-button for actions that don't result in navigation — use a standard button instead.
 
 ### Disabled state
 
 Use `disabled` to prevent interaction when an action is temporarily unavailable. Where possible, pair a disabled button with an explanation of why it's unavailable.
 
 ```html
-<my-button disabled>Unavailable</my-button>
+<ds-button disabled>Unavailable</ds-button>
 ```
 
 Avoid using `disabled` as a default state — if an action is never available in a given context, don't show the button at all.

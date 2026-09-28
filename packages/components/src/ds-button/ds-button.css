@@ -1,0 +1,69 @@
+@scope (ds-button) {
+  /* Unset makes sure styles don't leak in */
+  :scope,
+  *:where(:not(img, svg):not(svg *)),
+  *::before,
+  *::after {
+    all: unset;
+    display: revert;
+  }
+
+  /* Targets the host element (ds-button) */
+  :scope {
+    /* Default custom properties. Override for variants where needed. */
+    --ds-button-font: var(--font-family-body, sans-serif);
+    --ds-button-font-size: var(--size-step-0, 1rem);
+    --ds-button-font-weight: var(--font-weight-button, 500);
+    --ds-button-bg: var(--color-surface-default, white);
+    --ds-button-bg-hover: var(--color-surface-default-hover, #fafafa);
+    --ds-button-text: var(--color-text-loud, #121812);
+    --ds-button-padding-x: var(--space-sm, 1em);
+    --ds-button-padding-y: var(--space-xs, 0.6em);
+    --ds-button-border-color: var(--color-border-quiet, #eaeaea);
+    --ds-button-border-width: var(--border-width-main, 1px);
+    --ds-button-border-style: var(--border-style-main, solid);
+    --ds-button-radius: var(--radius-sm, 0.5em);
+    /* Display mode for the host element */
+    display: inline-block;
+  }
+
+  /* Overrides for primary variant */
+  :scope[variant="primary"] {
+    --ds-button-bg: var(--color-primary-bg, #3d33cf);
+    --ds-button-bg-hover: var(--color-primary-bg-hover, #3730b5);
+    --ds-button-text: var(--color-on-primary, #edf1ff);
+    --ds-button-border-color: transparent;
+  }
+  /* Overrides for danger variant */
+  :scope[variant="danger"] {
+    --ds-button-bg: var(--color-danger-bg, #fee2e2);
+    --ds-button-bg-hover: var(--color-danger-bg-hover, #fecaca);
+    --ds-button-text: var(--color-on-danger, #b91c1c);
+    --ds-button-border-color: transparent;
+  }
+  /* Overrides for success variant */
+  :scope[variant="success"] {
+    --ds-button-bg: var(--color-success-bg, #dcfce7);
+    --ds-button-bg-hover: var(--color-success-bg-hover, #bbf7d0);
+    --ds-button-text: var(--color-on-success, #064e3b);
+    --ds-button-border-color: transparent;
+  }
+
+  .ds-button {
+    font-family: var(--ds-button-font);
+    font-size: var(--ds-button-font-size);
+    font-weight: var(--ds-button-font-weight);
+    color: var(--ds-button-text);
+    background: var(--ds-button-bg);
+    border-color: var(--ds-button-border-color);
+    border-width: var(--ds-button-border-width);
+    border-style: var(--ds-button-border-style);
+    border-radius: var(--ds-button-radius);
+    padding: var(--ds-button-padding-y) var(--ds-button-padding-x);
+    display: inline-flex;
+    cursor: pointer;
+    &:hover {
+      background: var(--ds-button-bg-hover);
+    }
+  }
+}

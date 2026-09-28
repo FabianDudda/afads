@@ -1,5 +1,5 @@
 <script setup>
-import { data as manifest } from "../../custom-elements.data.mjs";
+import { useComponentManifest } from "../composables/useComponentManifest.js";
 
 const props = defineProps({
   tag: {
@@ -8,12 +8,7 @@ const props = defineProps({
   },
 });
 
-const component = manifest.modules
-  .flatMap((m) => m.declarations ?? [])
-  .find((d) => d.tagName === props.tag);
-
-const fields =
-  component?.members.filter((m) => m.kind === "field" && !m.static && m.description) ?? [];
+const { fields } = useComponentManifest(props.tag);
 </script>
 
 <template>
