@@ -143,7 +143,7 @@ const codeSnippet = computed(() => {
 
 <style scoped>
 .playground {
-  border: 1px solid #f6f6f6;
+  border: 1px solid var(--ds-color-border-quiet, #e4e4e7);
   border-radius: 6px;
   margin-top: 1.25rem;
   overflow: hidden;
@@ -154,7 +154,7 @@ const codeSnippet = computed(() => {
   align-items: center;
   gap: 0.5rem;
   padding: 1.5rem;
-  border-bottom: 1px solid #f6f6f6;
+  border-bottom: 1px solid var(--ds-color-border-quiet, #e4e4e7);
 }
 
 .playground-controls {
@@ -162,7 +162,7 @@ const codeSnippet = computed(() => {
   flex-wrap: wrap;
   gap: 1rem;
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid #f6f6f6;
+  border-bottom: 1px solid var(--ds-color-border-quiet, #e4e4e7);
 }
 
 .playground-control {

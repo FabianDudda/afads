@@ -2,14 +2,17 @@
   "name": "afads",
   "private": true,
   "workspaces": [
+    "packages/tokens",
     "packages/components"
   ],
   "scripts": {
+    "build:tokens": "npm run build --workspace=packages/tokens",
+    "watch:tokens": "npm run watch --workspace=packages/tokens",
     "build:lib": "npm run build --workspace=packages/components",
     "watch:lib": "npm run watch --workspace=packages/components",
     "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "dev": "concurrently \"npm run watch:lib\" \"npm run docs:dev\""
+    "docs:build": "npm run build:tokens && npm run build:lib && vitepress build docs",
+    "dev": "npm run build:tokens && concurrently \"npm run watch:tokens\" \"npm run watch:lib\" \"npm run docs:dev\""
   },
   "devDependencies": {
     "concurrently": "^9.2.4",
@@ -18,5 +21,8 @@
   },
   "dependencies": {
     "@elenajs/core": "^1.0.1"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

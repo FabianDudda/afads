@@ -76,6 +76,16 @@ Stack primary, danger, or success buttons next to one another
 
 Use `disabled` to prevent interaction when an action is temporarily unavailable. Where possible, pair a disabled button with an explanation of why it's unavailable.
 
+Disabled buttons look the same regardless of `variant`.
+
+::: raw
+<div class="component-example">
+  <ds-button disabled>Unavailable</ds-button>
+  <ds-button variant="primary" disabled>Unavailable</ds-button>
+  <ds-button variant="danger" disabled>Unavailable</ds-button>
+</div>
+:::
+
 ```html
 <ds-button disabled>Unavailable</ds-button>
 ```
@@ -90,7 +100,7 @@ Avoid using `disabled` as a default state — if an action is never available in
 
 <style>
     .component-example {
-        border: 1px solid #f6f6f6;
+        border: 1px solid var(--ds-color-border-quiet, #e4e4e7);
         border-radius: 6px;
         padding: 1.5rem;
         display: flex;

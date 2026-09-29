@@ -4,6 +4,19 @@ import { postcssIsolateStyles } from "vitepress";
 export default defineConfig({
   title: "My DS",
   description: "Component library documentation",
+  head: [
+    // Apply the design-system theme before first paint, mirroring VitePress' own
+    // appearance preference ("auto" is left to the prefers-color-scheme fallback).
+    [
+      "script",
+      {},
+      `;(() => {
+        const preference = localStorage.getItem("vitepress-theme-appearance");
+        if (preference === "dark" || preference === "light")
+          document.documentElement.dataset.theme = preference;
+      })()`,
+    ],
+  ],
   vite: {
     css: {
       postcss: {
@@ -38,6 +51,10 @@ export default defineConfig({
           { text: "Design Principles", link: "/design-principles" },
           { text: "Accessibility Principles", link: "/accessibility" },
         ],
+      },
+      {
+        text: "Foundations",
+        items: [{ text: "Design Tokens", link: "/foundations/tokens" }],
       },
       {
         text: "Components",

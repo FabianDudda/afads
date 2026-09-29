@@ -10,42 +10,50 @@
 
   /* Targets the host element (ds-button) */
   :scope {
-    /* Default custom properties. Override for variants where needed. */
-    --ds-button-font: var(--font-family-body, sans-serif);
-    --ds-button-font-size: var(--size-step-0, 1rem);
-    --ds-button-font-weight: var(--font-weight-button, 500);
-    --ds-button-bg: var(--color-surface-default, white);
-    --ds-button-bg-hover: var(--color-surface-default-hover, #fafafa);
-    --ds-button-text: var(--color-text-loud, #121812);
-    --ds-button-padding-x: var(--space-sm, 1em);
-    --ds-button-padding-y: var(--space-xs, 0.6em);
-    --ds-button-border-color: var(--color-border-quiet, #eaeaea);
-    --ds-button-border-width: var(--border-width-main, 1px);
-    --ds-button-border-style: var(--border-style-main, solid);
-    --ds-button-radius: var(--radius-sm, 0.5em);
+    /* Component tokens, mapped to semantic tokens from @my-ds/tokens.
+       Fallbacks (light theme) keep the component usable without tokens.css. */
+    --ds-button-font: var(--ds-font-family-body, sans-serif);
+    --ds-button-font-size: var(--ds-font-size-md, 1rem);
+    --ds-button-font-weight: var(--ds-font-weight-control, 500);
+    --ds-button-line-height: var(--ds-font-line-height-tight, 1.2);
+    --ds-button-bg: var(--ds-color-surface-default, #ffffff);
+    --ds-button-bg-hover: var(--ds-color-surface-hover, #f4f4f5);
+    --ds-button-text: var(--ds-color-text-loud, #09090b);
+    --ds-button-padding-x: var(--ds-space-md, 1rem);
+    --ds-button-padding-y: var(--ds-space-xs, 0.5rem);
+    --ds-button-border-color: var(--ds-color-border-quiet, #e4e4e7);
+    --ds-button-border-width: var(--ds-border-width-default, 1px);
+    --ds-button-border-style: solid;
+    --ds-button-radius: var(--ds-radius-md, 0.5rem);
+    --ds-button-focus-ring-color: var(--ds-color-focus-ring, #6366f1);
+    --ds-button-focus-ring-width: var(--ds-focus-ring-width, 2px);
+    --ds-button-focus-ring-offset: var(--ds-focus-ring-offset, 2px);
+    --ds-button-disabled-bg: var(--ds-color-surface-disabled, #f4f4f5);
+    --ds-button-disabled-text: var(--ds-color-text-disabled, #a1a1aa);
+    --ds-button-disabled-border-color: var(--ds-color-border-quiet, #e4e4e7);
     /* Display mode for the host element */
     display: inline-block;
   }
 
   /* Overrides for primary variant */
   :scope[variant="primary"] {
-    --ds-button-bg: var(--color-primary-bg, #3d33cf);
-    --ds-button-bg-hover: var(--color-primary-bg-hover, #3730b5);
-    --ds-button-text: var(--color-on-primary, #edf1ff);
+    --ds-button-bg: var(--ds-color-primary-solid, #4f46e5);
+    --ds-button-bg-hover: var(--ds-color-primary-solid-hover, #4338ca);
+    --ds-button-text: var(--ds-color-primary-on-solid, #ffffff);
     --ds-button-border-color: transparent;
   }
   /* Overrides for danger variant */
   :scope[variant="danger"] {
-    --ds-button-bg: var(--color-danger-bg, #fee2e2);
-    --ds-button-bg-hover: var(--color-danger-bg-hover, #fecaca);
-    --ds-button-text: var(--color-on-danger, #b91c1c);
+    --ds-button-bg: var(--ds-color-danger-subtle, #fee2e2);
+    --ds-button-bg-hover: var(--ds-color-danger-subtle-hover, #fecaca);
+    --ds-button-text: var(--ds-color-danger-on-subtle, #991b1b);
     --ds-button-border-color: transparent;
   }
   /* Overrides for success variant */
   :scope[variant="success"] {
-    --ds-button-bg: var(--color-success-bg, #dcfce7);
-    --ds-button-bg-hover: var(--color-success-bg-hover, #bbf7d0);
-    --ds-button-text: var(--color-on-success, #064e3b);
+    --ds-button-bg: var(--ds-color-success-subtle, #dcfce7);
+    --ds-button-bg-hover: var(--ds-color-success-subtle-hover, #bbf7d0);
+    --ds-button-text: var(--ds-color-success-on-subtle, #14532d);
     --ds-button-border-color: transparent;
   }
 
@@ -53,6 +61,10 @@
     font-family: var(--ds-button-font);
     font-size: var(--ds-button-font-size);
     font-weight: var(--ds-button-font-weight);
+    line-height: var(--ds-button-line-height);
+    /* Inherited properties would otherwise leak in from the surrounding page. */
+    letter-spacing: normal;
+    text-align: center;
     color: var(--ds-button-text);
     background: var(--ds-button-bg);
     border-color: var(--ds-button-border-color);
@@ -60,10 +72,25 @@
     border-style: var(--ds-button-border-style);
     border-radius: var(--ds-button-radius);
     padding: var(--ds-button-padding-y) var(--ds-button-padding-x);
+    box-sizing: border-box;
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     &:hover {
       background: var(--ds-button-bg-hover);
+    }
+    /* Keyboard focus only. The reset above removes the browser's ring. */
+    &:focus-visible {
+      outline: var(--ds-button-focus-ring-width) solid var(--ds-button-focus-ring-color);
+      outline-offset: var(--ds-button-focus-ring-offset);
+    }
+    /* Same look for every variant. Comes after :hover so it wins. */
+    &:disabled {
+      background: var(--ds-button-disabled-bg);
+      color: var(--ds-button-disabled-text);
+      border-color: var(--ds-button-disabled-border-color);
+      cursor: not-allowed;
     }
   }
 }

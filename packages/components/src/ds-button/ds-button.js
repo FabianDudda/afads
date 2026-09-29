@@ -9,6 +9,7 @@ import { Elena, html, nothing } from "@elenajs/core";
  * @cssprop [--ds-button-text] - Overrides the default text color.
  * @cssprop [--ds-button-bg] - Overrides the default background color.
  * @cssprop [--ds-button-font] - Overrides the default font family.
+ * @cssprop [--ds-button-focus-ring-color] - Overrides the keyboard focus ring color.
  */
 export default class DsButton extends Elena(HTMLElement) {
   static tagName = "ds-button";
