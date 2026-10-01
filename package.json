@@ -3,7 +3,8 @@
   "private": true,
   "workspaces": [
     "packages/tokens",
-    "packages/components"
+    "packages/components",
+    "examples/*"
   ],
   "scripts": {
     "build:tokens": "npm run build --workspace=packages/tokens",
@@ -12,7 +13,10 @@
     "watch:lib": "npm run watch --workspace=packages/components",
     "docs:dev": "vitepress dev docs",
     "docs:build": "npm run build:tokens && npm run build:lib && vitepress build docs",
-    "dev": "npm run build:tokens && concurrently \"npm run watch:tokens\" \"npm run watch:lib\" \"npm run docs:dev\""
+    "dev": "npm run build:tokens && concurrently \"npm run watch:tokens\" \"npm run watch:lib\" \"npm run docs:dev\"",
+    "example:react": "npm run build:tokens && npm run build:lib && concurrently \"npm run watch:tokens\" \"npm run watch:lib\" \"npm run dev -w examples/react\"",
+    "example:angular": "npm run build:tokens && npm run build:lib && concurrently \"npm run watch:tokens\" \"npm run watch:lib\" \"npm run start -w examples/angular\"",
+    "example:vanilla": "npm run build:tokens && npm run build:lib && concurrently \"npm run watch:tokens\" \"npm run watch:lib\" \"npm run dev -w examples/vanilla\""
   },
   "devDependencies": {
     "concurrently": "^9.2.4",

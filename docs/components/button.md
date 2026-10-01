@@ -92,6 +92,33 @@ Disabled buttons look the same regardless of `variant`.
 
 Avoid using `disabled` as a default state — if an action is never available in a given context, don't show the button at all.
 
+### Labels in frameworks
+
+The button reads its child text once, before the first render. Later changes to that text are not shown, and the button logs a console warning when it detects them. Whenever the label can change, pass it through the `text` property instead.
+
+- **Plain HTML and JavaScript:** child text is fine in markup. To change the label from JavaScript, set `text`. Don't set `textContent` or `innerHTML`: that replaces the rendered `<button>` with plain text.
+- **React:** child text is fine for fixed labels. Use `text` for anything that changes.
+- **Angular:** always use `text`. Angular can add child text after the button has rendered, which leaves the button empty with the text next to it.
+
+```tsx
+// React
+<ds-button variant="primary">Save</ds-button>
+<ds-button variant="primary" text={saving ? "Saving…" : "Save"} />
+```
+
+```html
+<!-- Angular -->
+<ds-button variant="primary" text="Save"></ds-button>
+<ds-button variant="primary" [text]="saving ? 'Saving…' : 'Save'"></ds-button>
+```
+
+```js
+// JavaScript
+const button = document.querySelector("ds-button");
+button.text = "Saving…"; // updates the label
+// button.textContent = "Saving…"; // don't: replaces the rendered <button>
+```
+
 ### Accessibility
 
 - Button text should clearly describe the action it triggers — avoid vague labels like "Click here" or "Submit"

@@ -1,4 +1,5 @@
 import { Elena, html, nothing } from "@elenajs/core";
+import { watchTextChildren, stopWatchingTextChildren } from "../utils/watch-text-children.js";
 
 /**
  * A standard button component used to trigger actions and events. Definitely not a `<div>`.
@@ -29,6 +30,38 @@ export default class DsButton extends Elena(HTMLElement) {
    * @type {"default" | "primary" | "danger" | "success" }
    */
   variant = "default";
+
+  /**
+   * The button label. Use this instead of child text when the label can change, and always in Angular.
+   *
+   * @attribute text
+   * @type {string}
+   */
+  get text() {
+    return super.text;
+  }
+
+  set text(value) {
+    super.text = value;
+  }
+
+  /**
+   * Warns in the console when a framework changes child text after the first render.
+   * @internal
+   */
+  connectedCallback() {
+    const startWatching = watchTextChildren(this);
+    super.connectedCallback();
+    startWatching();
+  }
+
+  /**
+   * @internal
+   */
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    stopWatchingTextChildren(this);
+  }
 
   /**
    * Renders the html template.

@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  font-family: var(--ds-font-family-body, sans-serif);
+  background: var(--ds-color-surface-default);
+  color: var(--ds-color-text-default);
+}
+
+main {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: var(--ds-space-xl) var(--ds-space-md);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-md);
+}
+
+h1,
+h2 {
+  color: var(--ds-color-text-loud);
+}
+
+h2 {
+  font-size: 1rem;
+  margin-top: var(--ds-space-xl);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-space-sm);
+}

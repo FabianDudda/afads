@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ds-button · Vanilla JS</title>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>ds-button in Vanilla JS</h1>
+        <ds-button id="theme-toggle">Toggle theme</ds-button>
+      </header>
+
+      <section>
+        <h2>Variants</h2>
+        <div class="row">
+          <ds-button>default</ds-button>
+          <ds-button variant="primary">primary</ds-button>
+          <ds-button variant="danger">danger</ds-button>
+          <ds-button variant="success">success</ds-button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Disabled (bound to state)</h2>
+        <div class="row">
+          <ds-button id="disabled-button" variant="primary" text="Enabled"></ds-button>
+          <label>
+            <input id="disabled-checkbox" type="checkbox" />
+            disabled
+          </label>
+        </div>
+      </section>
+
+      <section>
+        <h2>Events + dynamic text</h2>
+        <div class="row">
+          <ds-button id="count-button" variant="success" text="Clicked 0 times"></ds-button>
+          <ds-button id="reset-button" variant="danger">Reset</ds-button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Don't: updating child text</h2>
+        <p>
+          Child text is only read once, before the first render. Setting <code>textContent</code>
+          afterwards replaces the rendered button with plain text, and the component logs a console
+          warning. Click the counter above to see it. Set the <code>text</code> property instead.
+        </p>
+        <div class="row">
+          <ds-button id="stale-button">Clicked 0 times</ds-button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
